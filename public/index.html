@@ -142,7 +142,23 @@
   </main>
 
   <script>
-    console.log('Count!')
+    const countEl = document.querySelector('.count')
+    const incrementEl = document.querySelector('[value="increment"]')
+    const decrementEl = document.querySelector('[value="decrement"]')
+    let count = parseInt(countEl.textContent) || 0
+    const update = (operation) => {
+      if (operation === 'increment') {
+        count++
+      } else if (operation === 'decrement') {
+        count--
+      }
+
+      countEl.textContent = count
+    }
+
+    document.forms[0].onsubmit = event => event.preventDefault()
+    incrementEl.onclick = () => update('increment')
+    decrementEl.onclick = () => update('decrement')
   </script>
 </body>
 </html>
