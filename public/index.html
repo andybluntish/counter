@@ -169,7 +169,7 @@
     }
 
     function getData() {
-      let data = window.localStorage.getItem('count') //|| '{ "count": 0 }'
+      let data = window.localStorage.getItem('count') || '{ "count": 0 }'
       data = JSON.parse(data)
 
       return data
