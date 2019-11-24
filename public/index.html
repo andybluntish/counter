@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Counter</title>
+  <meta name="description" content="For counting things—anything!">
+  <meta name="copyright" content="Copyright (c) 2006–2019 Andy Stanford-Bluntish">
+  <meta name="author" content="Andy Stanford-Bluntish">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="supported-color-schemes" content="light dark">
+  <link rel="canonical" href="https://counter.andybluntish.com/">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" type="image/png">
+  <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#d93f00">
+  <link rel="manifest" href="/manifest.json">
+  <style>
+    :root {
+      --line-height: 1.618;
+      --size: calc(var(--line-height) * 1em);
+      --size-half: calc(var(--size) / 2);
+      --size-double: calc(var(--size) * 2);
+      --transition-duration: 0.3s;
+      --transition-function: ease;
+      --foreground: #363d49;
+      --background: #fff;
+      --highlight: #d93f00;
+      --increment: #00ea93;
+      --decrement: #ff5b35;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --foreground: #d1d6e0;
+        --background: #1b1d22;
+        --highlight: #ff9e66;
+        --increment: #008c58;
+        --decrement: #8c1a00;
+      }
+
+      svg {
+        filter: brightness(.8) contrast(1.2);
+      }
+    }
+
+    html { box-sizing: border-box; }
+    *, *:before, *:after { box-sizing: inherit; }
+
+    html {
+      height: 100%;
+      font-size: 100%;
+    }
+    @media (min-width: 48em) { html { font-size: 110%; } }
+
+    body {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      min-height: 100%;
+      margin: 0;
+      color: var(--foreground);
+      background: var(--background);
+      line-height: var(--line-height);
+      font-family: -apple-system, BlinkMacSystemFont, "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    a {
+      color: var(--highlight);
+      text-decoration: none;
+    }
+
+    a:focus, a:hover {
+      outline: none;
+      text-decoration: underline;
+    }
+
+    [role="banner"] {
+      padding: var(--size-half);
+      background: var(--background);
+      box-shadow: 0 1px 4px hsla(0, 0%, 0%, 0.5);
+    }
+
+    .title {
+      margin: 0;
+      line-height: 1;
+      font-size: 1rem;
+      text-transform: lowercase;
+    }
+    .title a { color: inherit; }
+    .title a:focus, .title a:hover { text-decoration: inherit; }
+
+    main {
+      display: grid;
+      grid-template-rows: 2fr 1fr;
+      align-items: center;
+      justify-items: center;
+      font-weight: bold;
+      font-size: 15vw;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: 100%;
+      height: 100%;
+    }
+
+    button {
+      font-weight: inherit;
+      font-size: inherit;
+      border: none;
+      padding: 0;
+      color: var(--foreground);
+      background: transparent;
+    }
+
+    button[value="increment"] {
+      background: var(--increment);
+    }
+
+    button[value="decrement"] {
+      background: var(--decrement);
+    }
+  </style>
+</head>
+<body>
+  <header role="banner">
+    <h1 class="title">
+      <a href="/" rel="home">Counter</a>
+    </h1>
+  </header>
+
+  <main>
+    <p class="count">0</p>
+
+    <form action="/">
+      <button name="action" value="decrement">−</button>
+      <button name="action" value="increment">+</button>
+    </form>
+  </main>
+
+  <script>
+    console.log('Count!')
+  </script>
+</body>
+</html>
