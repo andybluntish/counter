@@ -18,15 +18,9 @@
   <link rel="manifest" href="/manifest.json">
   <style>
     :root {
-      --line-height: 1.618;
-      --size: calc(var(--line-height) * 1em);
-      --size-half: calc(var(--size) / 2);
-      --size-double: calc(var(--size) * 2);
-      --transition-duration: 0.3s;
-      --transition-function: ease;
+      --size: 1rem;
       --foreground: #363d49;
       --background: #fff;
-      --highlight: #d93f00;
       --increment: #00ea93;
       --decrement: #ff5b35;
     }
@@ -35,13 +29,8 @@
       :root {
         --foreground: #d1d6e0;
         --background: #1b1d22;
-        --highlight: #ff9e66;
         --increment: #008c58;
         --decrement: #8c1a00;
-      }
-
-      svg {
-        filter: brightness(.8) contrast(1.2);
       }
     }
 
@@ -52,7 +41,6 @@
       height: 100%;
       font-size: 100%;
     }
-    @media (min-width: 48em) { html { font-size: 110%; } }
 
     body {
       display: grid;
@@ -63,58 +51,33 @@
       margin: 0;
       color: var(--foreground);
       background: var(--background);
-      line-height: var(--line-height);
-      font-family: -apple-system, BlinkMacSystemFont, "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
       font-weight: bold;
-      font-size: 6rem;
+      font-size: 7rem;
       -webkit-text-size-adjust: 100%;
     }
-
-    a {
-      color: var(--highlight);
-      text-decoration: none;
-    }
-
-    a:focus, a:hover {
-      outline: none;
-      text-decoration: underline;
-    }
-
-    [role="banner"] {
-      padding: var(--size-half);
-      background: var(--background);
-      box-shadow: 0 1px 4px hsla(0, 0%, 0%, 0.5);
-    }
-
-    .title {
-      margin: 0;
-      line-height: 1;
-      font-size: 1rem;
-      text-transform: lowercase;
-    }
-    .title a { color: inherit; }
-    .title a:focus, .title a:hover { text-decoration: inherit; }
 
     .count {
       margin: 0;
     }
 
-    form {
+    .controls {
       display: grid;
-      grid-template-columns: 1fr 1fr;
       grid-template-rows: 3fr 1fr;
+      grid-template-columns: 1fr 1fr;
       width: 100%;
       height: 100%;
     }
 
     button {
       display: block;
+      margin: 0;
       padding: 0;
-      font-weight: inherit;
       font-size: inherit;
-      border: none;
+      font-weight: inherit;
       color: var(--foreground);
       background: transparent;
+      border: none;
     }
 
     button[value="increment"] {
@@ -126,7 +89,7 @@
     }
 
     button[type="reset"] {
-      font-size: 2rem;
+      font-size: 30%;
       grid-column-start: 1;
       grid-column-end: 3;
     }
@@ -135,11 +98,11 @@
 <body>
   <p class="count">0</p>
 
-  <form action="/">
+  <div class="controls">
     <button name="action" value="decrement">−</button>
     <button name="action" value="increment">+</button>
     <button type="reset">reset</button>
-  </form>
+  </div>
 
   <script>
     const data = getData()
