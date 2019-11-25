@@ -56,13 +56,17 @@
 
     body {
       display: grid;
-      grid-template-rows: auto 1fr auto;
+      grid-template-rows: 2fr 1fr;
+      align-items: center;
+      justify-items: center;
       min-height: 100%;
       margin: 0;
       color: var(--foreground);
       background: var(--background);
       line-height: var(--line-height);
       font-family: -apple-system, BlinkMacSystemFont, "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: bold;
+      font-size: 6rem;
       -webkit-text-size-adjust: 100%;
     }
 
@@ -91,15 +95,6 @@
     .title a { color: inherit; }
     .title a:focus, .title a:hover { text-decoration: inherit; }
 
-    main {
-      display: grid;
-      grid-template-rows: 2fr 1fr;
-      align-items: center;
-      justify-items: center;
-      font-weight: bold;
-      font-size: 6rem;
-    }
-
     .count {
       margin: 0;
     }
@@ -113,10 +108,11 @@
     }
 
     button {
+      display: block;
+      padding: 0;
       font-weight: inherit;
       font-size: inherit;
       border: none;
-      padding: 0;
       color: var(--foreground);
       background: transparent;
     }
@@ -137,21 +133,13 @@
   </style>
 </head>
 <body>
-  <header role="banner">
-    <h1 class="title">
-      <a href="/" rel="home">Counter</a>
-    </h1>
-  </header>
+  <p class="count">0</p>
 
-  <main>
-    <p class="count">0</p>
-
-    <form action="/">
-      <button name="action" value="decrement">−</button>
-      <button name="action" value="increment">+</button>
-      <button type="reset">reset</button>
-    </form>
-  </main>
+  <form action="/">
+    <button name="action" value="decrement">−</button>
+    <button name="action" value="increment">+</button>
+    <button type="reset">reset</button>
+  </form>
 
   <script>
     const data = getData()
