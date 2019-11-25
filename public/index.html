@@ -97,18 +97,12 @@
   </div>
 
   <script>
-    const data = getData()
-    const countEl = document.querySelector('.count')
-    const incrementButton = document.querySelector('[value="increment"]')
-    const decrementButton = document.querySelector('[value="decrement"]')
-    const resetButton = document.querySelector('[type="reset"]')
+    let data = JSON.parse(window.localStorage.getItem('count') || '{ "count": 0 }')
+    render()
 
-    document.forms[0].onsubmit = event => event.preventDefault()
-    incrementButton.onclick = () => update('increment')
-    decrementButton.onclick = () => update('decrement')
-    resetButton.onclick = () => update('reset')
-
-    update()
+    document.querySelector('[value="increment"]').onclick = () => update('increment')
+    document.querySelector('[value="decrement"]').onclick = () => update('decrement')
+    document.querySelector('[type="reset"]').onclick = () => update('reset')
 
     function update(operation) {
       if (operation === 'increment') {
@@ -119,19 +113,12 @@
         data.count = 0
       }
 
-      countEl.textContent = data.count
-      setData(data)
-    }
-
-    function getData() {
-      let data = window.localStorage.getItem('count') || '{ "count": 0 }'
-      data = JSON.parse(data)
-
-      return data
-    }
-
-    function setData(data) {
       window.localStorage.setItem('count', JSON.stringify(data))
+      render()
+    }
+
+    function render() {
+      document.querySelector('.count').textContent = data.count
     }
   </script>
 </body>
