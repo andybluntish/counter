@@ -80,15 +80,15 @@
       user-select: none;
     }
 
-    button[value="increment"] {
+    #increment {
       background: var(--increment);
     }
 
-    button[value="decrement"] {
+    #decrement {
       background: var(--decrement);
     }
 
-    button[type="reset"] {
+    #reset {
       grid-column: 1 / span 2;
       font-size: 30%;
     }
@@ -98,9 +98,9 @@
   <p class="count">-</p>
 
   <div class="controls">
-    <button name="action" value="decrement">−</button>
-    <button name="action" value="increment">+</button>
-    <button type="reset">reset</button>
+    <button id="decrement">−</button>
+    <button id="increment">+</button>
+    <button id="reset">reset</button>
   </div>
 
   <script>
