@@ -77,6 +77,19 @@
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none;
+      transition: transform .1s ease, box-shadow .1s ease;
+    }
+
+    button:active {
+      transform: scale(0.94);
+    }
+
+    .counter {
+      box-shadow: 0 0 25px hsla(0, 0%, 0%, 0.15);
+    }
+
+    .counter:active {
+      box-shadow: 0 0 8px hsla(0, 0%, 0%, 0.15);
     }
 
     #increment {
@@ -97,9 +110,9 @@
   <p class="count">-</p>
 
   <div class="controls">
-    <button id="decrement">−</button>
-    <button id="increment">+</button>
-    <button id="reset">reset</button>
+    <button id="decrement" class="counter">−</button>
+    <button id="increment" class="counter">+</button>
+    <button id="reset" class="reset">reset</button>
   </div>
 
   <script>
