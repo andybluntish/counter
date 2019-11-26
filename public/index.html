@@ -104,29 +104,30 @@
   </div>
 
   <script>
-    let data = JSON.parse(window.localStorage.getItem('count') || '{ "count": 0 }')
-    render()
-
-    document.querySelector('[value="increment"]').onclick = () => update('increment')
-    document.querySelector('[value="decrement"]').onclick = () => update('decrement')
-    document.querySelector('[type="reset"]').onclick = () => update('reset')
-
-    function update(operation) {
-      if (operation === 'increment') {
-        data.count++
-      } else if (operation === 'decrement') {
-        data.count--
-      } else if (operation === 'reset') {
-        data.count = 0
-      }
-
-      window.localStorage.setItem('count', JSON.stringify(data))
-      render()
-    }
+    const data = JSON.parse(window.localStorage.getItem('count') || '{ "count": 0 }')
 
     function render() {
       document.querySelector('.count').textContent = data.count
     }
+
+    [increment, decrement, reset].forEach(el => {
+      el.onclick = el.ontouchstart = e => {
+        e.preventDefault()
+
+        if (el === increment) {
+          data.count++
+        } else if (el === decrement) {
+          data.count--
+        } else if (el === reset) {
+          data.count = 0
+        }
+
+        window.localStorage.setItem('count', JSON.stringify(data))
+        render()
+      }
+    })
+
+    render()
   </script>
 </body>
 </html>
