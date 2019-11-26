@@ -37,7 +37,10 @@
     html { box-sizing: border-box; }
     *, *:before, *:after { box-sizing: inherit; }
 
-    html { height: 100%; }
+    html {
+      height: 100%;
+      touch-action: manipulation;
+    }
     body {
       display: grid;
       grid-template-rows: 3fr 2fr;
@@ -71,6 +74,10 @@
       color: var(--foreground);
       background: transparent;
       border: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
 
     button[value="increment"] {
